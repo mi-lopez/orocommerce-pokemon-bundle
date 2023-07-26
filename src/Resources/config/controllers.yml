@@ -6,3 +6,10 @@ services:
             - '@oro_form.update_handler'
         calls:
             - ['setContainer', ['@Psr\Container\ContainerInterface']]
+
+    Synolia\Bundle\PokemonBundle\Controller\Frontend\PokemonAjaxController:
+        public: true
+        arguments:
+            - '@doctrine'
+        calls:
+            - ['setContainer', ['@Psr\Container\ContainerInterface']]

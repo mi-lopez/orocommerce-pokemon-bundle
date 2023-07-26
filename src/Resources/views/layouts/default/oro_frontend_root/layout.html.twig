@@ -1,0 +1,47 @@
+{% block _pokemon_game_area_widget %}
+    {% set attr = layout_attr_defaults(attr, {
+        'id': 'pokemon-game-area',
+        'data-page-component-view': 'synoliapokemon/js/app/views/pokemon-game-view',
+        'data-page-component-options': {}|json_encode
+    }) %}
+    <div {{ block('block_attributes') }}>
+        {{ block_widget(block) }}
+    </div>
+{% endblock %}
+
+{% block _pokemon_game_top_bar_widget %}
+    {% set attr = layout_attr_defaults(attr, {
+        '~class': ' pokemon-game-top-bar',
+    }) %}
+    <div {{ block('block_attributes') }}>
+        {{ block_widget(block) }}
+    </div>
+{% endblock %}
+
+{% block _pokemon_game_control_container_widget %}
+    {% set attr = layout_attr_defaults(attr, {
+        '~class': ' pokemon-game-control-container',
+    }) %}
+    <div {{ block('block_attributes') }}>
+        {{ block_widget(block) }}
+    </div>
+{% endblock %}
+
+{% block _pokemon_score_container_widget %}
+    {% set attr = layout_attr_defaults(attr, {
+        '~class': ' pokemon-score-container',
+    }) %}
+    <div {{ block('block_attributes') }}><span class="score-title">Your score: </span><span id="pokemon-score">0</span></div>
+{% endblock %}
+
+{% block _pokemon_title_widget %}
+    {% set attr = layout_attr_defaults(attr, {
+        '~class': ' pokemon-title',
+    }) %}
+    <div {{ block('block_attributes') }}>Catch a Pokémon!</div>
+{% endblock %}
+
+{% block _pokemon_button_widget %}
+    <button id="start-game">Start Game</button>
+    <button id="stop-game">Stop Game</button>
+{% endblock %}

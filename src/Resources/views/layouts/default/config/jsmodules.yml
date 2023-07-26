@@ -1,0 +1,3 @@
+dynamic-imports:
+    synoliapokemon:
+        - synoliapokemon/js/app/views/pokemon-game-view
