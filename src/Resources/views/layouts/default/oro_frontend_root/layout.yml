@@ -1,0 +1,30 @@
+layout:
+    actions:
+        - '@setBlockTheme':
+              themes: 'layout.html.twig'
+        - '@add':
+              id: pokemon_game_area
+              parentId: page_container
+              blockType: container
+
+        -   '@addTree':
+                items:
+                    pokemon_game_top_bar:
+                        blockType: container
+                        prepend: true
+                    pokemon_game_control_container:
+                        blockType: container
+                    pokemon_title:
+                        blockType: block
+                    pokemon_button:
+                        blockType: block
+                    pokemon_score_container:
+                        blockType: block
+                tree:
+                    page_header:
+                        pokemon_game_top_bar:
+                            pokemon_game_control_container:
+                                pokemon_title: ~
+                                pokemon_button: ~
+                                pokemon_score_container: ~
+

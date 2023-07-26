@@ -2,3 +2,10 @@ synolia_pokemon:
     resource: "@SynoliaPokemonBundle/Controller"
     type: annotation
     prefix: /pokemon
+
+synolia_pokemon_frontend_ajax:
+    resource: "@SynoliaPokemonBundle/Controller/Frontend/PokemonAjaxController.php"
+    type:     annotation
+    prefix:   /pokemon
+    options:
+        frontend: true

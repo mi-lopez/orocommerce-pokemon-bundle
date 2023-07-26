@@ -22,4 +22,14 @@ class PokemonRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Pokemon::class);
     }
+
+    public function getImages($max = 100)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p.image as image')
+            ->where('p.image IS NOT NULL')
+            ->setMaxResults($max);
+
+        return array_column($qb->getQuery()->getArrayResult(), 'image');
+    }
 }
