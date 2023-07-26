@@ -1,0 +1,119 @@
+datagrids:
+    synolia-pokemon-pokemon-grid-base:
+        extended_entity_name: Synolia\Bundle\PokemonBundle\Entity\Pokemon
+        acl_resource: synolia_pokemon_pokemon_view
+        options:
+            entityHint: synolia.pokemon.entity_plural_label
+        properties:
+            id: ~
+        source:
+            type: orm
+            query:
+                select:
+                    - e.id
+                    - e.code
+                    - e.name
+                    - e.image
+                    - e.type
+                    - 'TRIM(CONCAT(COALESCE(CONCAT(CAST(ownerUser.namePrefix as string), '' ''), ''''), COALESCE(CONCAT(CAST(ownerUser.firstName as string), '' ''), ''''), COALESCE(CONCAT(CAST(ownerUser.middleName as string), '' ''), ''''), COALESCE(CONCAT(CAST(ownerUser.lastName as string), '' ''), ''''), COALESCE(CAST(ownerUser.nameSuffix as string), ''''))) as uOwnerName'
+                from:
+                    -
+                        table: Synolia\Bundle\PokemonBundle\Entity\Pokemon
+                        alias: e
+                join:
+                    left:
+                        - { join: e.owner, alias: ownerUser }
+        columns:
+            code:
+                label: synolia.pokemon.code.label
+            name:
+                label: synolia.pokemon.name.label
+            image:
+                label: synolia.pokemon.image.label
+                type:          twig
+                frontend_type: html
+                template:      '@SynoliaPokemon/Datagrid/image.html.twig'
+            type:
+                label: synolia.pokemon.type.label
+                type:          twig
+                frontend_type: html
+                template:      '@SynoliaPokemon/Datagrid/type.html.twig'
+            uOwnerName:
+                label: synolia.pokemon.owner.label
+        sorters:
+            columns:
+                code:
+                    data_name: e.code
+                name:
+                    data_name: e.name
+                image:
+                    data_name: e.image
+                type:
+                    data_name: e.type
+                uOwnerName:
+                    data_name: uOwnerName
+        filters:
+            columns:
+                code:
+                    data_name: e.code
+                    type: string
+                name:
+                    data_name: e.name
+                    type: string
+                image:
+                    data_name: e.image
+                    type: string
+                type:
+                    data_name: e.type
+                    type: string
+                uOwnerName:
+                    data_name: uOwnerName
+                    type: string
+    synolia-pokemon-pokemon-grid-select:
+        extends: synolia-pokemon-pokemon-grid-base
+    synolia-pokemon-pokemon-grid-base-with-view-link:
+        extends: synolia-pokemon-pokemon-grid-base
+        properties:
+            view_link:
+                type: url
+                route: synolia_pokemon_pokemon_view
+                params:
+                    - id
+        actions:
+            view:
+                type: navigate
+                label: oro.grid.action.view
+                link: view_link
+                icon: eye
+                acl_resource: synolia_pokemon_pokemon_view
+                rowAction: true
+    synolia-pokemon-pokemon-grid:
+        extends: synolia-pokemon-pokemon-grid-base-with-view-link
+        options:
+            entity_pagination: true
+        source:
+            query:
+                select:
+                    - e.createdAt
+                    - e.updatedAt
+        columns:
+            createdAt:
+                label: oro.ui.created_at
+                frontend_type: datetime
+            updatedAt:
+                label: oro.ui.updated_at
+                frontend_type: datetime
+        sorters:
+            columns:
+                createdAt:
+                    data_name: e.createdAt
+                updatedAt:
+                    data_name: e.updatedAt
+        filters:
+            columns:
+                createdAt:
+                    data_name: e.createdAt
+                    type: datetime
+                updatedAt:
+                    data_name: e.updatedAt
+                    type: datetime

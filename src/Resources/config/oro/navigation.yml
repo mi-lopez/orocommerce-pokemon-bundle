@@ -1,0 +1,43 @@
+navigation:
+    menu_config:
+        items:
+            synolia_pokemon_pokemon_list:
+                label: synolia.pokemon.entity_plural_label
+                route: synolia_pokemon_pokemon_index
+                extras:
+                    routes:
+                        - synolia_pokemon_pokemon_index
+                        - synolia_pokemon_pokemon_view
+                        - synolia_pokemon_pokemon_create
+                        - synolia_pokemon_pokemon_update
+            shortcut_synolia_pokemon_pokemon_create:
+                label: synolia.pokemon.shortcut.new_pokemon.label
+                route: synolia_pokemon_pokemon_create
+            shortcut_synolia_pokemon_pokemon_index:
+                label: synolia.pokemon.shortcut.list_pokemon.label
+                route: synolia_pokemon_pokemon_index
+            synolia_tab:
+                label: synolia.organization_label
+                uri: '#'
+                extras:
+                    icon: fa-coffee
+            synolia_pokemon_tab:
+                label: synolia.pokemon.package_label
+                uri: '#'
+        tree:
+            application_menu:
+                children:
+                    synolia_tab:
+                        children:
+                            synolia_pokemon_tab:
+                                children:
+                                    synolia_pokemon_pokemon_list: ~
+            shortcuts:
+                children:
+                    shortcut_synolia_pokemon_pokemon_create: ~
+                    shortcut_synolia_pokemon_pokemon_index: ~
+    titles:
+        synolia_pokemon_pokemon_index: ~
+        synolia_pokemon_pokemon_create: oro.ui.create_entity
+        synolia_pokemon_pokemon_view: '%title% - oro.ui.view'
+        synolia_pokemon_pokemon_update: '%title% - oro.ui.edit'

@@ -1,0 +1,8 @@
+services:
+    Synolia\Bundle\PokemonBundle\Controller\PokemonController:
+        public: true
+        arguments:
+            - '@translator'
+            - '@oro_form.update_handler'
+        calls:
+            - ['setContainer', ['@Psr\Container\ContainerInterface']]

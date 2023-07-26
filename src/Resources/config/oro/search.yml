@@ -1,0 +1,29 @@
+search:
+    Synolia\Bundle\PokemonBundle\Entity\Pokemon:
+        alias: synolia_pokemon_pokemon
+        route:
+            name: synolia_pokemon_pokemon_view
+            parameters:
+                id: id
+        search_template: '@SynoliaPokemon/Pokemon/searchResult.html.twig'
+        fields:
+            -
+                name: code
+                target_type: text
+                target_fields:
+                    - code
+            -
+                name: name
+                target_type: text
+                target_fields:
+                    - name
+            -
+                name: image
+                target_type: text
+                target_fields:
+                    - image
+            -
+                name: type
+                target_type: text
+                target_fields:
+                    - type

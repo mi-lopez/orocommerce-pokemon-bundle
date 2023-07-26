@@ -1,0 +1,2 @@
+bundles:
+    - { name: Synolia\Bundle\PokemonBundle\SynoliaPokemonBundle, priority: 1024 }

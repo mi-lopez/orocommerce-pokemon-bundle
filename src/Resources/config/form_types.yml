@@ -1,0 +1,16 @@
+services:
+    Synolia\Bundle\PokemonBundle\Form\Type\PokemonCreateOrSelectType:
+        tags:
+            - { name: form.type, alias: synolia_pokemon_pokemon_create_or_select_type }
+
+    Synolia\Bundle\PokemonBundle\Form\Type\PokemonType:
+        tags:
+            - { name: form.type, alias: synolia_pokemon_pokemon_type }
+
+    synolia.pokemon.form.autocomplete.pokemon.search_handler:
+        parent: oro_form.autocomplete.search_handler
+        arguments:
+            - 'Synolia\Bundle\PokemonBundle\Entity\Pokemon'
+            - ['name']
+        tags:
+            - { name: oro_form.autocomplete.search_handler, alias: synolia_pokemon_pokemon, acl_resource: synolia_pokemon_pokemon_view }

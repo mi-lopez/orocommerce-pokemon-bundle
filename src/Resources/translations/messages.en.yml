@@ -1,0 +1,33 @@
+synolia:
+    pokemon:
+        connector:
+            pokemon_list:
+                label: Pokemon List Connector
+        channel_type:
+            label: Pokemon API
+        form:
+            transport:
+                url.label: Base URL
+        package_label: Pokemon
+        entity_label: Pokemon
+        entity_plural_label: Pokemon
+        entity_grid_all_view_label: 'All %entity_plural_label%'
+        id.label: ID
+        code.label: Pokemon URL
+        name.label: Name
+        image.label: Image
+        type.label: Type
+        owner.label: Owner
+        organization.label: Organization
+        menu:
+            pokemon: Pokemon
+        shortcut:
+            new_pokemon.label: 'Create new Pokemon'
+            list_pokemon.label: 'Show Pokemon'
+        section:
+            pokemon:
+                general.label: General
+        controller:
+            pokemon:
+                saved.message: 'Pokemon has been saved'
+    organization_label: Synolia

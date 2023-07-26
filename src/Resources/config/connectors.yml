@@ -1,0 +1,8 @@
+services:
+    Synolia\Bundle\PokemonBundle\Provider\Connector\PokemonListConnector:
+        arguments:
+            - '@oro_importexport.context_registry'
+            - '@oro_integration.logger.strategy'
+            - '@oro_integration.provider.connector_context_mediator'
+        tags:
+            - { name: oro_integration.connector, type: pokemon, channel_type: synolia_pokemon }

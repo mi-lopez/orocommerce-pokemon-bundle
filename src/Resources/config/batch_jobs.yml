@@ -1,0 +1,16 @@
+connector:
+    name: oro_importexport
+    jobs:
+        pokemon_list_data_import:
+            title: "Import Pokemon list from Pokemon API"
+            type: import
+            steps:
+                import:
+                    title: import
+                    class: Oro\Bundle\BatchBundle\Step\ItemStep
+                    services:
+                        reader: Synolia\Bundle\PokemonBundle\Provider\Connector\PokemonListConnector
+                        processor: oro_importexport.processor.import_delegate
+                        writer:    oro_integration.writer.persistent_batch_writer
+                    parameters:
+                        batch_size: 20

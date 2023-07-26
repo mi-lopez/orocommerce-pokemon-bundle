@@ -1,0 +1,5 @@
+services:
+    Synolia\Bundle\PokemonBundle\Entity\Repository\PokemonRepository:
+        parent: oro_entity.abstract_repository
+        tags:
+            - { name: doctrine.repository_service }

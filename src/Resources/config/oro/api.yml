@@ -1,0 +1,3 @@
+api:
+    entities:
+        Synolia\Bundle\PokemonBundle\Entity\Pokemon: ~

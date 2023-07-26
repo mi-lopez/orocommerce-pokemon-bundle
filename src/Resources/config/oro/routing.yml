@@ -1,0 +1,4 @@
+synolia_pokemon:
+    resource: "@SynoliaPokemonBundle/Controller"
+    type: annotation
+    prefix: /pokemon

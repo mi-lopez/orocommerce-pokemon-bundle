@@ -1,0 +1,24 @@
+services:
+    Synolia\Bundle\PokemonBundle\Provider\ChannelType:
+        tags:
+            - { name: oro_integration.channel, type: synolia_pokemon }
+
+    Synolia\Bundle\PokemonBundle\Provider\PokemonTransport:
+        parent: oro_integration.transport.rest.abstract_transport
+        tags:
+            - { name: oro_integration.transport, type: synolia_pokemon_transport, channel_type: synolia_pokemon }
+
+    synolia_pokemon.importexport.strategy.data:
+        class: Synolia\Bundle\PokemonBundle\ImportExport\Strategy\ConfigurableAddOrUpdateStrategy
+        parent: oro_importexport.strategy.configurable_add_or_replace
+
+    synolia_pokemon.importexport.processor.import.data:
+        parent: oro_importexport.processor.import_abstract
+        calls:
+            - [setStrategy,  ['@synolia_pokemon.importexport.strategy.data']]
+        tags:
+            - { name: oro_importexport.processor, type: import, entity: 'Synolia\Bundle\PokemonBundle\Entity\Pokemon', alias: synolia_pokemon.processor.data }
+
+    Synolia\Bundle\PokemonBundle\Twig\PokemonTypeBadgeExtension:
+        tags:
+            - { name: twig.extension }

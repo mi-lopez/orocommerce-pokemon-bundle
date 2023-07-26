@@ -1,0 +1,41 @@
+{% extends '@OroUI/actions/view.html.twig' %}
+{% import '@OroUI/macros.html.twig' as UI %}
+{% import '@OroEntityConfig/macros.html.twig' as entityConfig %}
+
+{% oro_title_set({params : {"%title%": entity|oro_format_name|default('N/A'|trans) } }) %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('synolia_pokemon_pokemon_index'),
+        'indexLabel': 'synolia.pokemon.entity_plural_label'|trans,
+        'entityTitle': entity|oro_format_name|default('N/A'|trans)
+} %}
+
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+
+    {% set dataBlocks = [
+        {
+            'title': 'synolia.pokemon.section.pokemon.general.label'|trans,
+            'subblocks': [
+                {
+                    'data' : [
+                        UI.renderProperty('synolia.pokemon.code.label'|trans, entity.code),
+                        UI.renderProperty('synolia.pokemon.name.label'|trans, entity.name),
+                        UI.renderProperty('synolia.pokemon.image.label'|trans, entity.image),
+                        UI.renderProperty('synolia.pokemon.type.label'|trans, entity.type),
+                        entityConfig.renderDynamicFields(entity)
+                    ]
+                }
+            ]
+        },
+    ] %}
+
+    {% set id = 'synolia-pokemon-pokemon-view' %}
+    {% set data = {'dataBlocks': dataBlocks} %}
+
+    {{ parent() }}
+{% endblock content_data %}

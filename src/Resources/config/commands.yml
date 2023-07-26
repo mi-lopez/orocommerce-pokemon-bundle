@@ -1,0 +1,7 @@
+services:
+    Synolia\Bundle\PokemonBundle\Command\PokemonInformationCommand:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@Synolia\Bundle\PokemonBundle\Provider\PokemonTransport'
+        tags:
+            - { name: console.command }
